@@ -34,12 +34,6 @@
                                 Modify Unit
                             </button>
                             </div>
-                            <!--<div class="input-group mb-3">
-                                <span class="input-group-text">
-                                    <i class="bi bi-search"></i>
-                                </span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search name...">
-                            </div>-->
                         </div>
                     <div class="container mb-4">
                     <div class="table-responsive">
