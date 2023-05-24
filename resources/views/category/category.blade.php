@@ -31,7 +31,7 @@
                                     View Stocks
                                 </button>
                             </a>
-                            <a href="#" title="Modify Unit">
+                            <a href="{{ route('unit-list') }}" title="Modify Unit">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     Modify Unit
@@ -50,6 +50,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($tbl_category as $category)
+                                        <tr>
+                                            <td>{{ $category->id }}</td>
+                                            <td>{{ $category->category }}</td>
+                                            <td>
+                                                <a href="{{ route('update-category', ['id' => $category->id] ) }}">
+                                                    <button class="btn-view btn-sm" title="EDIT">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('delete-category', ['id' => $category->id] ) }}">
+                                                    <button class="btn-restricted btn-sm" title="DELETE">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -68,14 +86,14 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <form method="POST" action="#">
+                                <form method="POST" action="{{ route('save-category') }}">
                                     @csrf
                                     <div class="form-ni">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <input type="text" id="name" name="name" class="form-control mt-2" placeholder="Name" required/>
-                                                    <label for="name">Name</label>
+                                                    <input type="text" id="category" name="category" class="form-control mt-2" placeholder="Category Name" required/>
+                                                    <label for="category">Category Name</label>
                                                 </div>
                                             </div>
                                         </div>

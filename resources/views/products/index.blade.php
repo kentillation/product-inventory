@@ -25,7 +25,7 @@
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="Modify Category">
+                            <a href="{{ route('category-list') }}" title="Modify Category">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     Modify Category

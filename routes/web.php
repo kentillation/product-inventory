@@ -16,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('products/index');
 });
-<<<<<<< HEAD
+
 Route::get('/category', 'CategoryController@create')->name('create-category');
 Route::post('/category/save', 'CategoryController@save')->name('save-category');
 Route::get('category/list', 'CategoryController@list')->name('category-list');
 Route::get('category/edit/{id}', 'CategoryController@update')->name('update-category');
 Route::post('category/save-update/{id}', 'CategoryController@saveUpdate')->name('save-update');
 Route::get('category/list/{id}', 'CategoryController@delete')->name('delete-category');
-=======
 
 //Unit
 Route::get('/unit', 'UnitController@create')->name('create-unit'); //create
@@ -32,4 +31,4 @@ Route::get('/unit/list', 'UnitController@list')->name('unit-list'); //list
 Route::get('/unit/update/{id}', 'UnitController@update')->name('update-unit'); //edit
 Route::post('/unit/save-update/{id}', 'UnitController@saveUpdate')->name('update-save-unit'); //save update
 Route::get('/unit/list/{id}', 'UnitController@delete')->name('delete-unit'); //delete
->>>>>>> 8a74bcb96643f438c75f71e9963c7cdfa1dbb36f
+
