@@ -9,7 +9,7 @@ class UnitModel extends Model
 {
     use HasFactory;
 
-    protected $table = "tbl_unit";
+    protected $table = "tbl_units";
     protected $fillable = ['unit'];
 
     public function products()
