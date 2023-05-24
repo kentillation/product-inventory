@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     //return view('products/index');
+//     Route::get('/products', 'ProductController@search');
+// });
 
-    return view('index');
-});
+Route::get('/', 'ProductController@search');
 
 // PRODUCT
 Route::get('/products', 'ProductController@search')->name('search-product');
@@ -25,9 +27,7 @@ Route::post('/products/save', 'ProductController@save')->name('save-product');
 Route::put('/products/edit/{id}', 'ProductController@update')->name('update-product');
 Route::delete('/products/delete/{id}', 'ProductController@save')->name('delete-product');
 
-    return view('products/index');
-});
-
+//CATEGORY
 Route::get('/category', 'CategoryController@create')->name('create-category');
 Route::post('/category/save', 'CategoryController@save')->name('save-category');
 Route::get('category/list', 'CategoryController@list')->name('category-list');
