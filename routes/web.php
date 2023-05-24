@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    return view('index');
+});
+
+// PRODUCT
+Route::get('/products', 'ProductController@search')->name('search-product');
+Route::get('/products/edit/{id}', 'ProductController@get')->name('get-product');
+Route::post('/products/save', 'ProductController@save')->name('save-product');
+Route::put('/products/edit/{id}', 'ProductController@update')->name('update-product');
+Route::delete('/products/delete/{id}', 'ProductController@save')->name('delete-product');
+
     return view('products/index');
 });
 
@@ -31,4 +42,5 @@ Route::get('/unit/list', 'UnitController@list')->name('unit-list'); //list
 Route::get('/unit/update/{id}', 'UnitController@update')->name('update-unit'); //edit
 Route::post('/unit/save-update/{id}', 'UnitController@saveUpdate')->name('update-save-unit'); //save update
 Route::get('/unit/list/{id}', 'UnitController@delete')->name('delete-unit'); //delete
+
 
