@@ -15,14 +15,15 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $products = ProductModel::select('tbl_products.*, tbl_category.category', 'tbl_units.unit')
-            ->join('tbl_category', 'tbl_products.category_id', '=', 'tbl_category.id')
-            ->join('tbl_units', 'tbl_products.unit_id', '=', 'tbl_units.id')
-            ->where('tbl_products.name', 'like', '%' . $search . '%')
-            ->get();
+        $products = ProductModel::select('name', 'price', 'description', 'unit', 'availability', 'quantity', 'category')
+             ->join('tbl_category', 'tbl_products.category_id', '=', 'tbl_category.id')
+             ->join('tbl_units', 'tbl_products.unit_id', '=', 'tbl_units.id')
+             ->where('tbl_products.name', 'like', '%' . $search . '%')
+             ->get();
 
         $categories = CategoryModel::all();
         $units = UnitModel::all();
+
         return view('products/index', ['products' => $products, 'categories' => $categories, 'units' => $units]);
     }
 
@@ -34,22 +35,22 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        try {
-            $data = [
-                'name' => $request->input('name'),
-                'price' => $request->input('price'),
-                'description' => $request->input('description'),
-                'unit_id' => $request->input('unit_id'),
-                'availability' => $request->input('availability'),
-                'quantity' => $request->input('quantity'),
-                'category_id' => $request->input('category_id'),
-            ];
-
-            ProductModel::create($data);
-            return redirect()->route('search-product')->with('success', 'Product added successfully');
-        } catch (\Exception $e) {
-            return redirect()->route('search-product')->with('error', 'Failed to add the product');
+       
+        $product = new ProductModel;
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->unit_id = $request->input('unit_id');
+        $number = 0;
+        if($request->input('availability') == 'Available')
+        {
+            $number = 1;
         }
+        $product->availability = $number;
+        $product->quantity = $request->input('quantity');
+        $product->category_id = $request->input('category_id');
+        $product->save();
+        return redirect()->route('search-product')->with('success', 'Product added successfully');
     }
 
     public function update(Request $request, $id)

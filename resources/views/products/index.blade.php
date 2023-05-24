@@ -55,6 +55,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->description }}</td>
+                                            <td>{{ $product->unit }}</td>
+                                            <td>{{ $product->availability_id == 0 ? "Available" : "Sold out" }}</td>
+                                            <td>{{ $product->quantity }}</td>
+                                            <td>{{ $product->category }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -73,7 +84,7 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <form method="POST" action="#">
+                                <form method="POST" action="{{ route('save-product') }}">
                                     @csrf
                                     <div class="form-ni">
                                         <div class="row">
@@ -85,7 +96,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <input type="text" id="prite" name="prite" class="form-control mt-2" placeholder="Price" required/>
+                                                    <input type="text" id="price" name="price" class="form-control mt-2" placeholder="Price" required/>
                                                     <label for="price">Price</label>
                                                 </div>
                                             </div>
@@ -98,8 +109,11 @@
                                             <div class="col-12">
                                                 <div class="form-floating">
                                                     <!--<input type="text" id="unit" name="unit" class="form-control mt-2" placeholder="Unit" required/>-->
-                                                    <select id="unit" name="unit" class="form-control mt-2" placeholder="Unit">
+                                                    <select id="unit" name="unit_id" class="form-control mt-2" placeholder="Unit">
                                                         <option selected>-select unit-</option>
+                                                            @foreach ($units as $unit)
+                                                                <option value="{{ $unit->id }}">{{ $unit->unit }}</option>
+                                                            @endforeach
                                                     </select>
                                                     <label for="unit">Unit</label>
                                                 </div>
@@ -118,8 +132,11 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <select id="category" name="category" class="form-control mt-2" placeholder="Category">
+                                                    <select id="category" name="category_id" class="form-control mt-2" placeholder="Category">
                                                         <option selected>-select category-</option>
+                                                            @foreach ($categories as $category)
+                                                                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                                            @endforeach
                                                     </select>
                                                     <label for="category">Category</label>
                                                 </div>
