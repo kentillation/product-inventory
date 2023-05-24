@@ -21,22 +21,28 @@
                     <h1 class="heading1 text-center mb-5"><strong>LIST OF UNIT</strong></h1>
                     <div class="search">
                         <div class="btn-dl me-2">
-                            <button class="btn-add-user mb-3" type="button" title="ADD UNIT" data-bs-toggle="modal" data-bs-target="#addunitModal">
+                            <button class="btn-add-user" type="button" title="ADD UNIT" data-bs-toggle="modal" data-bs-target="#addunitModal">
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="View Stocks" target="_blank">
+                            <a href="#" title="View Stocks">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     View Stocks
                                 </button>
                             </a>
-                            <a href="#" title="Modify Unit" target="_blank">
+                            <a href="#" title="Modify Category">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     Modify Category
                                 </button>
                             </a>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search name...">
                         </div>
                     </div>
                     <div class="container mb-4">
@@ -50,6 +56,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($tbl_units as $unit)
+                                        <tr>
+                                            <td>{{ $unit->id }}</td>
+                                            <td>{{ $unit->unit }}</td>
+                                            <td>
+                                                <a href="{{ route('update-unit', ['id' => $unit->id] ) }}">
+                                                    <button class="btn-view btn-sm" title="MODIFY">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('delete-unit', ['id' => $unit->id] ) }}">
+                                                    <button class="btn-restricted btn-sm" title="DELETE">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -68,14 +92,14 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div class="container">
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ route('save-unit') }}">
                                  @csrf
                                 <div class="form-ni">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <input type="text" id="unit_name" name="unit_name" class="form-control mt-2" placeholder="unit_name" required/>
-                                                <label for="name">Unit Name</label>
+                                                <input type="text" id="unit" name="unit" class="form-control mt-2" placeholder="unit" required/>
+                                                <label for="unit">Unit Name</label>
                                             </div>
                                         </div>
                                     </div>

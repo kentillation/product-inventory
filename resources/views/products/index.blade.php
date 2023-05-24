@@ -25,16 +25,18 @@
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="Modify Category" target="_blank">
+                            <a href="#" title="Modify Category">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     Modify Category
                                 </button>
                             </a>
-                            <button class="btn-download mb-3" title="Modify Unit">
-                                <i class="bi bi-pencil-square">&nbsp;</i>
-                                Modify Unit
-                            </button>
+                            <a href="{{ route('unit-list') }}" title="Modify Unit">
+                                <button class="btn-download mb-3">
+                                    <i class="bi bi-pencil-square">&nbsp;</i>
+                                    Modify Unit
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="container mb-4">
