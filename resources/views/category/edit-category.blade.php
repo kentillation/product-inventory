@@ -19,11 +19,11 @@
             <div class="container border rounded p-5 mt-5" id="table">
                 <div class="container">
                     <div class="mb-5">
-                        <a href="{{ route('category') }}" class="back-arrow" title="BACK">
+                        <a href="{{ route('category-list') }}" class="back-arrow" title="BACK">
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="{{ route('saveUpdate', ['id' => $tbl_units['id']]) }}">
+                    <form method="post" action="{{ route('save-update', ['id' => $tbl_category['id']]) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">

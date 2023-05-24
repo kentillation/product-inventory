@@ -18,22 +18,22 @@ class CategoryController extends Controller
        }
     public function list() {
         $category = CategoryModel::all();
-        return view("category/lsit", ['tbl_category' => $category]);
+        return view("category/category", ['tbl_category' => $category]);
     }
     
     public function update(Request $request, $id) {
      $category = CategoryModel::find($id);
-     $reponse = [
+     $response = [
         'tbl_category' => $category
      ];
-     return value('category/update'. $response);
+        return view('category/edit-category', $response);
     }
 
     public function saveUpdate(Request $request, $id) {
         $data = [
             'category' => $request->input()['category']
         ];
-        $update_category = UnitCategory::where('id', $id)->update($date);
+        $update_category = CategoryModel::where('id', $id)->update($data);
         return redirect(route('category-list'));
     }
 
