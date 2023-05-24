@@ -25,13 +25,13 @@
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="View Stocks" target="_blank">
+                            <a href="#" title="View Stocks">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     View Stocks
                                 </button>
                             </a>
-                            <a href="#" title="Modify Unit" target="_blank">
+                            <a href="#" title="Modify Unit">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     Modify Unit

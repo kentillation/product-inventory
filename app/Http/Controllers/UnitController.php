@@ -27,7 +27,7 @@ class UnitController extends Controller
         $response = [
             'tbl_units' => $unit
         ];
-        return view('unit/edit-unit'. $response);
+        return view('unit/edit-unit', $response);
     }
 
     public function saveUpdate(Request $request, $id) {
