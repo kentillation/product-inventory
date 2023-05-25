@@ -19,40 +19,48 @@
             <div class="container border rounded p-5 mt-5" id="table">
                 <div class="container">
                     <div class="mb-5">
-                        <a href="{{ route('unit') }}" class="back-arrow" title="BACK">
+                        <a href="{{ route('search-product') }}" class="back-arrow" title="BACK">
                             <i class="bi bi-arrow-left"></i>
                         </a>
                     </div>
-                    <form method="post" action="{{ route('saveUpdate', ['id' => $tbl_products['id']]) }}">
+                    <form method="post" action="{{ route('update-product', ['id' => $products['id']]) }}">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <label for="name">Product Name</label>
-                                <input type='text' name='name' value="{{ $tbl_products['name'] }}" id="name" class="form-control mb-3" required />
+                                <input type='text' name='name' value="{{ $products['name'] }}" id="name" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="name">Price</label>
-                                <input type='text' name='price' value="{{ $tbl_products['price'] }}" id="price" class="form-control mb-3" required />
+                                <input type='text' name='price' value="{{ $products['price'] }}" id="price" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="name">Description</label>
-                                <input type='text' name='description' value="{{ $tbl_products['description'] }}" id="description" class="form-control mb-3" required />
+                                <input type='text' name='description' value="{{ $products['description'] }}" id="description" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
-                                <label for="name">Unit Name</label>
-                                <input type='text' name='unit' value="{{ $tbl_products['unit_id'] }}" id="unit" class="form-control mb-3" required />
+                                <label for="unit">Unit</label>
+                                <select id="unit" name="unit_id" class="form-control mt-2" placeholder="Unit">
+                                    @foreach ($units as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->unit }}</option>
+                                     @endforeach
+                                </select>
                             </div>
                             <div class="col-12">
                                 <label for="name">Availability</label>
-                                <input type='text' name='availability' value="{{ $tbl_products['availability'] }}" id="availability" class="form-control mb-3" required />
+                                <input type='text' name='availability' value="{{ $products['availability'] }}" id="availability" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
-                                <label for="name">Quantity</label>
-                                <input type='number' name='quantity' value="{{ $tbl_products['quantity_id'] }}" id="quantity" class="form-control mb-3" required />
+                                <label for="quantity">Quantity</label>
+                                <input type='number' name='quantity' value="{{ $products['quantity'] }}" id="quantity" class="form-control mb-3" required />
                             </div>
                             <div class="col-12">
                                 <label for="name">Category</label>
-                                <input type='text' name='category' value="{{ $tbl_products['category_id'] }}" id="category" class="form-control mb-3" required />
+                                <select id="category" name="category_id" class="form-control mt-2" placeholder="Category">
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                     @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="container mt-2">

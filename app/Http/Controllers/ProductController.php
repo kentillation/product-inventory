@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $products = ProductModel::select('name', 'price', 'description', 'unit', 'availability', 'quantity', 'category')
+        $products = ProductModel::select('tbl_products.id', 'name', 'price', 'description', 'unit', 'availability', 'quantity', 'category')
              ->join('tbl_category', 'tbl_products.category_id', '=', 'tbl_category.id')
              ->join('tbl_units', 'tbl_products.unit_id', '=', 'tbl_units.id')
              ->where('tbl_products.name', 'like', '%' . $search . '%')
@@ -29,13 +29,14 @@ class ProductController extends Controller
 
     public function get($id)
     {
-        $product = ProductModel::with(['tbl_category', 'tbl_units'])->findorfail($id);
-        return view('products/edit-product', ['product' => $product]);
+        $categories = CategoryModel::all();
+        $units = UnitModel::all();
+        $product = ProductModel::findorfail($id);
+        return view('products/edit-product', ['products' => $product, 'categories' => $categories, 'units' => $units]);
     }
 
     public function save(Request $request)
     {
-       
         $product = new ProductModel;
         $product->name = $request->input('name');
         $product->price = $request->input('price');
@@ -66,7 +67,6 @@ class ProductController extends Controller
                 'quantity' => $request->input('quantity'),
                 'category_id' => $request->input('category_id'),
             ];
-
             $product->update($data);
             return redirect()->route('search-product')->with('success', 'Product update successfully');
         } catch (\Exception $e) {

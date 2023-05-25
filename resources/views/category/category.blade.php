@@ -25,7 +25,7 @@
                                 <i class="bi bi-plus-lg">&nbsp;</i>
                                 ADD
                             </button>
-                            <a href="#" title="View Stocks">
+                            <a href="{{ route('search-product') }}" title="View Stocks">
                                 <button class="btn-download">
                                     <i class="bi bi-pencil-square">&nbsp;</i>
                                     View Stocks
