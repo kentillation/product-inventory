@@ -64,6 +64,18 @@
                                             <td>{{ $product->availability_id == 0 ? "Available" : "Sold out" }}</td>
                                             <td>{{ $product->quantity }}</td>
                                             <td>{{ $product->category }}</td>
+                                            <td>
+                                                <a href="{{ route('get-product', ['id' => $product->id] ) }}">
+                                                    <button class="btn-view btn-sm" title="EDIT">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('delete-product', ['id' => $product->id] ) }}">
+                                                    <button class="btn-restricted btn-sm" title="DELETE">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -120,7 +132,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <input type="text" id="availability" name="availability" class="form-control mt-2" placeholder="Availability" required/>
+                                                    <input type="text" id="availability" name="availability" value="Available" class="form-control mt-2" placeholder="Availability" readonly/>
                                                     <label for="availability">Availability</label>
                                                 </div>
                                             </div>
