@@ -30,3 +30,7 @@ Prerequisites:
 PHP 8+
 Composer
 MySQL
+
+🙌 Credits
+Developed by Kent Anthony Engbino
+Inspired by Laravel documentation and community tutorials.
